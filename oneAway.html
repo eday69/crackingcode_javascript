@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<p> One Away </p>
+
+<script type="text/javascript">
+
+/*
+ *
+ * Given two string, write a function to check if they are one edit (or zero
+ * edits) away. Edits: insert a character, remove a character or replace a
+ * character.
+ *
+ */
+
+ function isOneAway(str1, str2)
+ {
+   var len1, len2, s1, s2;
+
+   len1=str1.length;
+   len2=str2.length;
+   if (Math.abs(len1 - len2) > 1)
+     return false;
+
+   s1=(len1 < len2) ? str1:str2;
+   s2=(len1 < len2) ? str2:str1;
+
+   var idx1=0, idx2=0;
+   var found=false;
+   while ((idx2 < len2) && (idx1 < len1)) {
+     if (s1.charAt(idx1) != s2.charAt(idx2)) {
+       if (found) return false; // already a previous difference, found new
+       found = true;
+       if (s1.length == s2.length) { idx1+=1; }
+     } else {
+       idx1+=1;
+     }
+     idx2+=1;
+   }
+   return true;
+}
+
+
+var str1="pale";
+var str2="patle";
+
+document.write('<div>Input: str1 '+str1+' str2 '+str2+'</div>');
+if (isOneAway(str1, str2))
+  document.write('<div>Output: YES </div>');
+else
+  document.write('<div>Output: NO </div>');
+
+</script>
+</body>
+</html>

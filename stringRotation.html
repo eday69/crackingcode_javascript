@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<p> String Rotation </p>
+
+<script type="text/javascript">
+
+/*
+ *
+ * Assume you have a method isSubtring which checks if one word
+ * is a substring of another. Given two string, s1 and s2, write
+ * code to check if s2 is a rotation of s1 using only one call
+ * to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat")
+ *
+ */
+
+function isSubstring(str1, str2)
+{
+  return (str1.indexOf(str2) !== -1);
+}
+
+ function stringRotation(s1,s2)
+ {
+   if (s1.length == s2.length) {
+     return isSubstring(s1+s1, s2);
+   }
+   else
+     return false;
+ }
+
+var s1="waterbottle";
+var s2="erbottlewat";
+
+document.write('<div>Inputs: s1: '+s1+' s2: '+s2+'</div>');
+document.write('<div>Output: '+ stringRotation(s1,s2)+' </div>');
+
+</script>
+</body>
+</html>

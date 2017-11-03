@@ -1,0 +1,49 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<p> String Compression </p>
+
+<script type="text/javascript">
+
+/*
+ *
+ * Implement a method to perform basic string compression using the
+ * counts of repeated characters.
+ *
+ */
+
+ function stringCompressed(str)
+ {
+   var newstr="";
+   strlen=str.length;
+   if (strlen > 2) {// if string is longer than 2 characters.
+     idxchar=str[0];
+     count=0;
+     for (var i=0; i<str.length; i++) {
+       if (str[i] == idxchar) {
+         count +=1;
+       } else {
+         newstr += idxchar+count;
+         idxchar=str[i];
+         count=1;
+       }
+     }
+     newstr += idxchar+count;
+   }
+   if (newstr.length >= strlen)
+     return str;
+   else
+     return newstr;
+ }
+
+var str="aabcccaaa";
+
+document.write('<div>Input: str '+str+'</div>');
+document.write('<div>Output: '+ stringCompressed(str)+' </div>');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<p> Zero Matrix </p>
+
+<script type="text/javascript">
+
+/*
+ *
+ * Write an algorithm such that if an element in a MxN matrix is 0, its
+ * entire tow and column are set to 0.
+ *
+ */
+
+ function zeroMatrix(matrix)
+ {
+   var m=matrix[0].length;
+   var n=matrix.length;
+   var rows={}, cols={};
+   for (var i=0; i<n; i++) {
+     for (var j=0; j<m; j++) {
+       if (matrix[i][j] == 0) {
+//         document.write('Found i: '+i+' j:'+j);
+         cols[j]=1; // save each column with zeros (only one may exist)
+         rows[i]=1; // save each row with zeros (only one may exist)
+       }
+     }
+   }
+   var tcol, trow;
+   for (var tcol in cols) {  // zeros in columns
+     for (i=0; i<n; i++) {
+       matrix[i][tcol]=0;
+     }
+   }
+
+   for (var trow in rows) {  //zeros in rows
+     for (i=0; i<m; i++) {
+       matrix[trow][i]=0;
+     }
+   }
+
+   return matrix;
+ }
+
+var matrix=[
+  [1,3,0,1,4],
+  [2,1,1,6,5],
+  [9,8,0,0,0],
+  [1,1,1,1,7]];
+
+document.write('<div>Input: matrix <br>');
+for (i=0; i < matrix.length; i++) {
+   for (j = 0; j < matrix[i].length; j++) { document.write(matrix[i][j]+' '); }
+   document.write('<br>');
+}
+document.write('</div>');
+var newmatrix=zeroMatrix(matrix);
+document.write('<div>Output: new matrix <br>');
+for (i=0; i < matrix.length; i++) {
+   for (j = 0; j < matrix[i].length; j++) { document.write(newmatrix[i][j]+' '); }
+   document.write('<br>');
+}
+document.write('</div>');
+
+</script>
+</body>
+</html>

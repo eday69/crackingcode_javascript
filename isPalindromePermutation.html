@@ -1,0 +1,73 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<p> Permutation of a Palindrome </p>
+
+<script type="text/javascript">
+
+/*
+ *
+ * Given a string, write a function to check if it is a permutation
+ * of a palindrome (word/phrase that is the same forwards and backwards)
+ *
+ */
+ function isEven(n) {
+   return n % 2 == 0;
+ }
+
+ function countOdds(myobj)
+ {
+   var numOdds=0;
+   for (var prop in myobj)
+   {
+     if (myobj[prop] % 2 != 0) numOdds +=1;
+   }
+   return numOdds;
+ }
+
+ function isPalindromePermutation(str)
+ {
+   var i, ch, len;
+   var strchars={};
+   var isPaPer = true;
+   str = str.toLowerCase().replace(' ','');
+   len=str.length;
+   if ((len) > 2)  // string is longer than two chars
+   {
+     // count number of time chars repeat
+     for (i = 0; i < len; i++)
+     {
+       ch = str.charAt(i);
+       count = strchars[ch];
+       strchars[ch] = count ? count + 1 : 1;
+     }
+    // find permutations, then check is they are palindromes
+//    document.write(JSON.stringify(strchars));
+    var numOdd = countOdds(strchars);
+    if (isEven(len)) // no odd chars
+    {
+       if (numOdd != 0) isPaPer = false;
+    }
+    else { //must have only one odd char
+      if (numOdd != 1) isPaPer = false;
+    }
+
+   }
+   return(isPaPer);
+ }
+
+
+//alert('Hola');
+var example="Tact Coaxx";
+document.write('<div>Input: '+example+'</div>');
+if (isPalindromePermutation(example))
+  document.write('<div>Output: YES </div>');
+else
+  document.write('<div>Output: NO </div>');
+
+</script>
+</body>
+</html>
